@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health Insurance Incentive Program</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container" style="width: 650px;">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="text-center">Health Insurance Incentive Program</h1>
+        <hr />
+        <br />
+        <div id="recordPatient">
+          <p>While recording patient details please use patient Id from 1 to 9 only.
+            Since local ganache provides only 10 accounts out of which one has been allocated to Insurance provider
+            while contract deployment.</p>
+          <form onSubmit="App.recordPatient(); return false;">
+            <div class="form-group">
+              <label for="patientId">Patient Id: </label>
+              <input class="form-control" id="patientId" />
+              <label for="disease">Disease: </label>
+              <input class="form-control" id="disease" />
+              <label for="gender">Gender: </label>
+              <input class="form-control" id="gender" />
+              <label for="age">Age: </label>
+              <input class="form-control" id="age" />
+            </div>
+            <button type="submit" class="btn btn-primary">Record Patient</button>
+            <hr />
+          </form>
+        </div>
+        <div id="fetchDetails">
+          <form onSubmit="App.patientDetails(); return false;">
+            <div class="form-group">
+              <label for="patientSelect">Enter the patient Id</label>
+              <input class="form-control" id="patientSelect" />
+            </div>
+            <button type="submit" class="btn btn-primary">Fetch Patient Details</button>
+            <hr />
+          </form>
+        </div>
+        <div id="content">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Patient Id</th>
+                <th scope="col">Disease</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Eligibility</th>
+                <th scope="col">Days Recorded</th>
+              </tr>
+            </thead>
+            <tbody id="patientDetails">
+            </tbody>
+          </table>
+          <hr />
+          <p>Store the penalty amount in contract as patient</p>
+          <br />
+          <button onclick="App.storePenalty()" class="btn btn-primary">Store Penalty Amount</button>
+          <br />
+          <p id="confirmPenalty" class="text-center"></p>
+          <br />
+          <p>Record the patient steps in contract as insurance provider</p>
+          <label for="footSteps">Record Footsteps</label>
+          <input class="form-control" id="footSteps" />
+          <p class="text-center" id="confirmFootsteps"></p>
+          <br />
+          <button onclick="App.recordSteps()" class="btn btn-primary">Enter</button>
+          <br />
+          <p>Settle incentive at end of the month as insurance provider</p>
+          <p class="text-center" id="confirmIncentive"></p>
+          <br />
+          <button onclick="App.settleIncentive()" class="btn btn-primary">Settle Incentive</button>
+          <br />
+        </div>
+      </div>
+    </div>
+    <p id="event" class="text-center"></p>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
